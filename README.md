@@ -9,7 +9,7 @@ Banka is a light-weight core banking application that powers banking operations 
 
 ## Project Management Tool
 
-**Pivotal Tracker:** Project is currently being managed with pivotal tracker, at https://www.pivotaltracker.com/n/projects/2320086
+**Pivotal Tracker:** Project is currently being managed with pivotal tracker, at https://www.pivotaltracker.com/n/projects/2357175
 
 ## Built With
 - [Node.js](https://nodejs.org/en/)

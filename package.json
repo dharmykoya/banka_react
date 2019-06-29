@@ -49,6 +49,11 @@
     "type": "git",
     "url": "git+https://github.com/dharmykoya/banka.git"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint && npm run test"
+    }
+  },
   "keywords": [
     "Banka",
     "Andela",
