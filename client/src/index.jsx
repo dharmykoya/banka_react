@@ -1,11 +1,14 @@
 import React, { Fragment } from "react";
 import { render } from "react-dom";
+import Homepage from "./components/HomePage/HomePage";
+import Navbar from "./components/Navbar/Navbar";
 import "./index.css";
 
 const App = () => {
   return (
     <Fragment>
-      <h1>Hello, Damilola Adekoya</h1>
+      <Navbar />
+      <Homepage />
     </Fragment>
   );
 };
