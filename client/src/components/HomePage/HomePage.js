@@ -1,23 +1,12 @@
 import React from "react";
 import "./HomePage.css";
-import SVG from "react-inlinesvg";
-import Image1 from "../../../public/assets/index1.svg";
-import Image2 from "../../../public/assets/index2.svg";
-import Image3 from "../../../public/assets/land.svg";
+// import SVG from "react-inlinesvg";
+import { Image1 } from "../../svg";
+import Logo from "../../../public/assets/logo5.png";
 
 const HomePage = () => {
   return (
     <div>
-      {/* <Image1 />
-      <Image3 />
-
-      <SVG
-        src="../../../public/assets/land.svg"
-        preloader={<Loader />}
-        onLoad={src => {
-          myOnLoadHandler(src);
-        }} */}
-      />
       <main>
         <div className="index-container">
           <div className="index-text-container">
@@ -37,20 +26,20 @@ const HomePage = () => {
           </div>
           <div className="index-text-images">
             <div className="index-image">
-              <img src="./img/index1.svg" alt="save with us" />
+              <img src={Image1} alt="save with us" />
               <p>Save</p>
             </div>
             <div className="index-image">
-              <img src={Image1} alt="save with us" />
+              <img src="" alt="save with us" />
               <p>Investments</p>
             </div>
             <div className="index-image">
               {/* <img src="./img/index3.svg" alt="save with us" /> */}
-              <img src={PicA} alt="save with us" />
+              <img src="" alt="save with us" />
               <p>Secured</p>
             </div>
             <div className="index-image">
-              <img src="./img/index4.svg" alt="save with us" />
+              <img src="" alt="save with us" />
               <p>Every where you go</p>
             </div>
           </div>
