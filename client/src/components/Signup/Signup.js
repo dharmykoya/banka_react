@@ -4,15 +4,15 @@ import "./Signup.css";
 const Signup = () => {
   return (
     <main>
-      <div class="signup-container">
-        <form class="register-form" action="" id="signupForm" method="POST">
-          <div class="form">
-            <div class="alert hide">
-              <span class="closebtn" id="closebtn">
+      <div className="signup-container">
+        <form className="register-form" action="" id="signupForm" method="POST">
+          <div className="form">
+            <div className="alert hide">
+              <span className="closebtn" id="closebtn">
                 &times;
               </span>
-              <div class="clearfix" />
-              <ul class="message white" />
+              <div className="clearfix" />
+              <ul className="message white" />
             </div>
             <input
               type="text"
@@ -49,9 +49,9 @@ const Signup = () => {
               name="password2"
               required
             />
-            <button class="signup-button">Sign UP</button>
-            <div class="button-loader" />
-            <p class="message">
+            <button className="signup-button">Sign UP</button>
+            <div className="button-loader" />
+            <p className="message">
               Registered? <a href="signin.html">Login</a>
             </p>
           </div>
