@@ -7,6 +7,7 @@ import Signup from "./components/Signup/Signup";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import Transaction from "./components/Transaction/Transaction";
+import ListUser from "./components/ListUser/ListUser";
 import "./index.css";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <Dashboard />
       <CreateAccount />
       <Transaction />
+      <ListUser />
     </Fragment>
   );
 };
