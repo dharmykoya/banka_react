@@ -4,6 +4,7 @@ import Homepage from "./components/HomePage/HomePage";
 import Navbar from "./components/Navbar/Navbar";
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
+import Dashboard from "./components/Dashboard/Dashboard";
 import "./index.css";
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
       <Homepage />
       <Signin />
       <Signup />
+      <Dashboard />
     </Fragment>
   );
 };
