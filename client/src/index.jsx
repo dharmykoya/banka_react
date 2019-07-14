@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
 import Dashboard from "./components/Dashboard/Dashboard";
+import CreateAccount from "./components/CreateAccount/CreateAccount";
 import "./index.css";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <Signin />
       <Signup />
       <Dashboard />
+      <CreateAccount />
     </Fragment>
   );
 };
