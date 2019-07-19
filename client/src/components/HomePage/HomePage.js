@@ -2,6 +2,7 @@ import React from "react";
 import "./HomePage.css";
 // import SVG from "react-inlinesvg";
 import { Image1 } from "../../svg";
+import { Link } from "react-router-dom";
 import Logo from "../../../public/assets/logo5.png";
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
             <h4 className="index-text-2">
               Where we make dreams bigger and achievable.
             </h4>
+            <Link to="/signin">signin</Link>
             <h5 className="index-text-3">Bank with Us Today.</h5>
             <div className="demo-container">
               <a className="demo-button" href="adminDashboard.html">
