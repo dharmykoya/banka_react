@@ -13,15 +13,17 @@ import './index.css';
 class App extends Component {
   render() {
     return (
-      <Switch>
-        <Route path="/" exact component={Homepage} />
-        <Route path="/signin" exact component={Signin} />
-        <Route path="/signup" exact component={Signup} />
-        <Route path="/dashboard" exact component={Dashboard} />
-        <Route path="/create-account" exact component={CreateAccount} />
-        <Route path="/transaction" exact component={Transaction} />
-        <Route path="/list-users" exact component={ListUser} />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route path="/" exact component={Homepage} />
+          <Route path="/signin" exact component={Signin} />
+          <Route path="/signup" exact component={Signup} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/create-account" component={CreateAccount} />
+          <Route path="/transaction" component={Transaction} />
+          <Route path="/list-users" component={ListUser} />
+        </Switch>
+      </Layout>
     );
   }
 }

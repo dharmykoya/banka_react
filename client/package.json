@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "client:dev": "rm -rf dist && webpack-dev-server --env.mode development --open --hot",
-    "webpack": "webpack --env.mode development",
+    "webpack": "webpack --env.mode production",
     "debug-test": "node --inspect --inspect-brk ./src/index.html",
     "debug": "node --inspect --inspect-brk ./src/App.js"
   },
@@ -30,6 +30,7 @@
     "webpack-merge": "^4.2.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "file-loader": "^4.0.0",
     "react-svg-loader": "^3.0.3",
     "svg-inline-loader": "^0.8.0",

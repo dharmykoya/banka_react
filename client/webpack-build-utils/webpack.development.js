@@ -1,5 +1,6 @@
 module.exports = {
   devServer: {
-    port: 5000
+    port: 7000,
+    historyApiFallback: true
   }
 };

@@ -4,7 +4,7 @@ body {
 }
 
 .index-logo {
-  width: 30px;
+  width: 20px;
   height: 22px;
 }
 
@@ -55,6 +55,10 @@ body {
 
 .demo-container {
   margin-top: 15px;
+}
+
+.demo-container a{
+  margin-right: 5px;
 }
 .demo-button {
   background: #dd4f05;

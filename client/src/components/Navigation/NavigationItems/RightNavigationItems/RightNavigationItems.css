@@ -1,0 +1,22 @@
+.NavRight {
+  background-color: #dd4f05;
+  color: white;
+}
+.NavRight ul {
+  margin-right: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .NavRight ul a {
+    display: none;
+    padding: 10px;
+    font-size: 18px;
+  }
+  .NavRight ul {
+    margin-top: 0px;
+    list-style-type: none;
+    padding-left: 5px;
+    width: 100%;
+    padding: 10px 10px 0px 2px;
+  }
+}
