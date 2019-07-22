@@ -1,0 +1,22 @@
+.Hamburger {
+  display: none;
+  margin: auto 0px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .Hamburger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    margin-top: 13px;
+  }
+
+  .Hamburger div{
+    width: 21px;
+    height: 4px;
+    background-color: black;
+    margin: 3px 0;
+  }
+}

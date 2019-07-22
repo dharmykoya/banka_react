@@ -57,7 +57,7 @@ a {
   position: absolute;
   background: #f6f4ff;
 }
-
+.active
 .preloader-img {
   margin: auto;
 }
@@ -153,6 +153,7 @@ a {
 .active {
   background-color: #f9722e;
   color: white;
+  padding: 10px;
 }
 
 /* Hide the link that should open and close the topnav on small screens */

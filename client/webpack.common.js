@@ -6,12 +6,17 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.join(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  devServer: {
+    port: 5000,
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['.jsx', '.js'],
     alias: {
-      // '<atom>': path.resolve(__dirname, 'src.index')
+      '<atom>': path.resolve(__dirname, 'src.index')
     }
   },
   plugins: [
@@ -30,7 +35,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-transform-arrow-functions']
+            plugins: [
+              '@babel/plugin-transform-arrow-functions',
+              '@babel/plugin-proposal-class-properties'
+            ]
           }
         }
       },

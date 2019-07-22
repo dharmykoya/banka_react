@@ -1,9 +1,7 @@
-import React from "react";
-import "./HomePage.css";
-// import SVG from "react-inlinesvg";
-import { Image1 } from "../../svg";
-import { Link } from "react-router-dom";
-import Logo from "../../../public/assets/logo5.png";
+import React from 'react';
+import './HomePage.css';
+import { Image1, Image } from '../../svg/index';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (
@@ -28,7 +26,7 @@ const HomePage = () => {
           </div>
           <div className="index-text-images">
             <div className="index-image">
-              <img src={Image1} alt="save with us" />
+              <img src={Image} alt="save with us" />
               <p>Save</p>
             </div>
             <div className="index-image">
