@@ -1,5 +1,6 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import Homepage from './components/HomePage/HomePage';
 import Signin from './components/Signin/Signin';
