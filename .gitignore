@@ -7,3 +7,5 @@ node_modules
 .DS_STORE
 client/node_modules
 client/dist
+coverage
+babel config
