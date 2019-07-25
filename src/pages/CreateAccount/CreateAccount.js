@@ -1,5 +1,5 @@
-import React from "react";
-import "./createAccount.css";
+import React from 'react';
+import './createAccount.css';
 
 const CreateAccount = () => {
   return (
@@ -27,7 +27,7 @@ const CreateAccount = () => {
               <option value="current">Current</option>
             </select>
             <p>
-              By creating an account you agree to our{" "}
+              By creating an account you agree to our{' '}
               <a href="#" className="orange">
                 Terms & Privacy
               </a>

@@ -1,5 +1,7 @@
-import React from "react";
-import "./Signup.css";
+import React from 'react';
+import './Signup.css';
+import Inputfield from '../../components/InputField/InputField';
+import Button from '../../components/Buttons/Button';
 
 const Signup = () => {
   return (
@@ -14,45 +16,46 @@ const Signup = () => {
               <div className="clearfix" />
               <ul className="message white" />
             </div>
-            <input
+            <Inputfield
               type="text"
               id="firstName"
-              placeholder="First Name"
+              placeholder="Firstname"
               name="firstName"
-              required
+              required="true"
             />
-            <input
+            <Inputfield
               type="text"
               id="lastName"
               placeholder="Last Name"
               name="lastName"
               required
             />
-            <input
+            <Inputfield
               type="email"
               id="email"
               placeholder="Email address"
               name="email"
               required
             />
-            <input
+            <Inputfield
               type="password"
               id="password"
               placeholder="password"
               name="password"
               required
             />
-            <input
+            <Inputfield
               type="password"
               id="confirm_password"
               placeholder="confirm password"
               name="password2"
               required
             />
-            <button className="signup-button">Sign UP</button>
+            <Button nameClass="signup-button">Sign UP</Button>
             <div className="button-loader" />
             <p className="message">
-              Registered? <a href="signin.html">Login</a>
+              Registered?
+              <a href="signin.html">Login</a>
             </p>
           </div>
         </form>
