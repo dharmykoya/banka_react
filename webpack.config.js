@@ -1,7 +1,7 @@
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common');
 
-module.exports = env => {
+module.exports = (env) => {
   let envConfig;
   !env.module
     ? (envConfig = require('./webpack.development'))

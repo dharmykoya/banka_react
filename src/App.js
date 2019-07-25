@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
-import Homepage from './components/HomePage/HomePage';
-import Signin from './components/Signin/Signin';
-import Signup from './components/Signup/Signup';
-import Dashboard from './components/Dashboard/Dashboard';
-import CreateAccount from './components/CreateAccount/CreateAccount';
-import Transaction from './components/Transaction/Transaction';
-import ListUser from './components/ListUser/ListUser';
+import Homepage from './pages/HomePage/HomePage';
+import Signin from './pages/Signin/Signin';
+import Signup from './pages/Signup/Signup';
+import Dashboard from './pages/Dashboard/Dashboard';
+import CreateAccount from './pages/CreateAccount/CreateAccount';
+import Transaction from './pages/Transaction/Transaction';
+import ListUser from './pages/ListUser/ListUser';
 import './index.css';
 
 class App extends Component {
