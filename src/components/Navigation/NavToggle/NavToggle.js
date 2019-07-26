@@ -3,17 +3,15 @@ import RightNavigationItems from '../NavigationItems/RightNavigationItems/RightN
 import './NavToggle.css';
 
 const navToggle = (props) => {
-  console.log(44, props)
-  let attachedClasses = ['NavToggle', 'Close']
+  let attachedClasses = ['NavToggle', 'Close'];
   if (props.open) {
-    attachedClasses = ['NavToggle', 'Open']
+    attachedClasses = ['NavToggle', 'Open'];
   }
-  console.log(34, attachedClasses)
-  return  (
+  return (
     <nav className={attachedClasses.join(' ')}>
       <RightNavigationItems />
     </nav>
-  )
+  );
 };
 
 export default navToggle;
