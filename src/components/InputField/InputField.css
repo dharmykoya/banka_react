@@ -1,4 +1,4 @@
-.inputField {
+/* .inputField {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -8,4 +8,13 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+} */
+
+.inputError {
+  border: 1px solid red;
+  background-color: salmon;
+}
+
+.inputBorder {
+  border: 0;
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Aux from '../Cover/Cover';
-import NavBar from '../../components/Navbar/Navbar';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import NavToggle from '../../components/Navigation/NavToggle/NavToggle';
 
@@ -11,7 +10,7 @@ class Layout extends Component {
 
   navToggleHandler = () => {
     console.log(23, 'goooooddd');
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return { showNavToggle: !prevState.showNavToggle };
     });
   };

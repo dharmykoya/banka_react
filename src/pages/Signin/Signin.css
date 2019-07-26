@@ -1,5 +1,5 @@
 body {
-  font-family: "Ubuntu";
+  font-family: 'Ubuntu';
 }
 
 /*styling of the Signup Page*/
@@ -14,18 +14,17 @@ body {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
-  border: 0;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
 }
 .form button {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   outline: 0;
   background: #dd4f05;
@@ -42,6 +41,11 @@ body {
 .form button:active,
 .form button:focus {
   background: #ab3d04;
+}
+
+.form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 .form .message {
   margin: 15px 0 0;
