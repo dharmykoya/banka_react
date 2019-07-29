@@ -6,7 +6,16 @@ import Button from '../../components/Buttons/Button';
 configure({ adapter: new Adapter() });
 
 describe('<Button />', () => {
+  const props = {
+    nameClass: 'input',
+    children: 'submit',
+    disabled: true
+  };
   it('should render Button', () => {
-    shallow(<Button />);
+    shallow(<Button {...props} />);
+  });
+
+  it('should render Button', () => {
+    shallow(<Button {...props} />);
   });
 });

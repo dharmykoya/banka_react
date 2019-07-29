@@ -1,12 +1,15 @@
 /* eslint-disable arrow-parens */
 import React, { Component } from 'react';
-import axios from '../../axios-auth';
+import { connect } from 'react-redux';
 import './Signin.css';
 import Inputfield from '../../components/InputField/InputField';
 import Button from '../../components/Buttons/Button';
 import Spinner from '../../components/Spinner/Spinner';
+import action from './store/auth.action';
 
-class Signin extends Component {
+const { auth, authFail, authStart, authSuccess } = action;
+
+export class Signin extends Component {
   state = {
     userData: {
       email: {
@@ -39,13 +42,12 @@ class Signin extends Component {
         touched: false
       }
     },
-    formIsValid: false,
-    loading: false
+    formIsValid: false
   };
 
   signinHandler = (e) => {
-    this.setState({ loading: true });
     e.preventDefault();
+
     const { userData } = this.state;
     const inputNames = Object.keys(userData);
     const loginDetails = {};
@@ -53,14 +55,7 @@ class Signin extends Component {
       loginDetails[name] = userData[name].value;
     });
 
-    axios
-      .post('auth/signin', loginDetails)
-      .then((response) => {
-        this.setState({ loading: false });
-      })
-      .catch((error) => {
-        this.setState({ loading: false });
-      });
+    this.props.onAuth(loginDetails);
   };
 
   inputChangedHandler = (event, inputName) => {
@@ -86,7 +81,6 @@ class Signin extends Component {
       formIsValid = updatedUserData[input].valid && formIsValid;
     });
 
-
     this.setState({ userData: updatedUserData, formIsValid });
   };
 
@@ -104,7 +98,8 @@ class Signin extends Component {
   };
 
   render() {
-    const { userData, loading, formIsValid } = this.state;
+    const { userData, formIsValid } = this.state;
+    const { loading } = this.props;
     const InputNames = Object.keys(userData);
 
     const formElementsArray = [];
@@ -120,8 +115,22 @@ class Signin extends Component {
         Login
       </Button>
     );
+
     if (loading) {
       button = <Spinner />;
+    }
+
+    let errorMessage;
+
+    if (this.props.error) {
+      errorMessage = (
+        <div className="alert hide">
+          <span className="closebtn" id="closebtn">
+            &times;
+          </span>
+          <h3 className="message white">{this.props.error}</h3>
+        </div>
+      );
     }
 
     return (
@@ -134,17 +143,12 @@ class Signin extends Component {
             onSubmit={this.signinHandler}
           >
             <div className="form">
-              <div className="alert hide">
-                <span className="closebtn" id="closebtn">
-                  &times;
-                </span>
-                <h3 className="message white">good to go</h3>
-              </div>
+              {errorMessage}
 
               {formElementsArray.map((formElement) => (
                 <Inputfield
                   key={formElement.id}
-                  elementType={formElement.config.elementtype}
+                  elementtype={formElement.config.elementtype}
                   elementConfig={formElement.config.elementConfig}
                   value={formElement.config.value}
                   invalid={!formElement.config.valid}
@@ -159,7 +163,7 @@ class Signin extends Component {
               <div className="button-loader" />
               <p className="message">
                 Not Registered?
-                <a href="signup.html">Signup</a>
+                <a href="signup.html">Signin</a>
               </p>
             </div>
           </form>
@@ -169,5 +173,19 @@ class Signin extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    loading: state.auth.loading,
+    error: state.auth.error
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password) => dispatch(auth(email, password))
+  };
+};
 
-export default Signin;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Signin);
