@@ -22,17 +22,56 @@ it('should test for input displays Your Email placeholder', () => {
   getByPlaceholderText('Your Email');
 });
 
-it('should test for input displays Your Email placeholder', () => {
+it('should render a textarea element', () => {
   const textarea = {
+    elementtype: 'textarea',
     elementConfig: {
       placeholder: 'Enter description',
       required: true,
-      type: 'textarea',
-      elementtype: 'textarea',
-      invalid: 'true'
+      invalid: 'true',
+      value: 'testing text area field'
     }
   };
-  const tree = renderInput(textarea);
-  const { getByPlaceholderText } = tree;
+  const { getByPlaceholderText, getByText } = render(<Input {...textarea} />);
+  const div = getByText('testing text area field');
   getByPlaceholderText('Enter description');
+  expect(div.className).toBe('hello');
+  expect(div.value).toBe('testing text area field');
+});
+
+it('should test for input classname to be euqal inputError', () => {
+  const errorInput = {
+    elementtype: 'input',
+    elementConfig: {
+      placeholder: 'First Name',
+      required: true,
+      invalid: 'true',
+      type: 'text'
+    },
+    invalid: true,
+    shouldValidate: true,
+    touched: true
+  };
+  const { getByPlaceholderText } = render(<Input {...errorInput} />);
+  const div = getByPlaceholderText('First Name');
+  expect(div.className).toBe('inputField inputError');
+});
+
+it('should render a select element', () => {
+  const selectElement = {
+    elementtype: 'select',
+    elementConfig: {
+      options: [
+        { value: 'savings', displayValue: 'Savings' },
+        { value: 'current', displayValue: 'Current' }
+      ]
+    },
+    validation: {
+      required: false
+    },
+    value: 'fastest',
+    valid: false
+  };
+  const { container } = render(<Input {...selectElement} />);
+  expect(container.querySelector('select').className).toBe('hello');
 });

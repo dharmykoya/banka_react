@@ -11,7 +11,7 @@ const toolbar = props => (
     <header className="Header">
       <div className="logo-container">
         <Link to="/" className="logo-text">
-          <img className="index-logo" src={Logo} />
+          <img className="index-logo" src={Logo} alt="logo" />
           anka
         </Link>
       </div>

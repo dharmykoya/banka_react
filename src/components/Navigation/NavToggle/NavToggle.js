@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RightNavigationItems from '../NavigationItems/RightNavigationItems/RightNavigationItems';
 import './NavToggle.css';
 
@@ -13,5 +14,7 @@ const navToggle = (props) => {
     </nav>
   );
 };
-
+navToggle.propTypes = {
+  open: PropTypes.bool.isRequired
+};
 export default navToggle;
