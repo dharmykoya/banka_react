@@ -21,7 +21,7 @@ const input = (props) => {
 
   switch (props.elementtype) {
     case 'input':
-      inputElement = (
+      return inputElement = (
         <input
           className={inputClass.join(' ')}
           value={value}
@@ -29,17 +29,15 @@ const input = (props) => {
           onChange={changed}
         />
       );
-      break;
     case 'textarea':
-      inputElement = (
+      return inputElement = (
         <textarea
           className="hello"
-          value={value}
           {...elementConfig}
           onChange={changed}
-        />
+        >{value}</textarea>
       );
-      break;
+      
     case 'select':
       inputElement = (
         <select className="hello" value={value}>
