@@ -14,7 +14,7 @@ const middlewares = [];
 // here it is possible to pass in any middleware if needed into //configureStore
 const mockStore = configureStore(middlewares);
 
-let wrapper;
+
 let store;
 
 beforeEach(() => {
