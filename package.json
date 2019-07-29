@@ -1,6 +1,9 @@
 {
   "name": "webpackboilerplate",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.4.0"
+  },
   "description": "web pack boiler plate",
   "main": "index.js",
   "author": "Damilola Adekoya",
