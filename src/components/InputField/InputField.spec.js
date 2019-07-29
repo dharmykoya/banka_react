@@ -21,3 +21,18 @@ it('should test for input displays Your Email placeholder', () => {
   const { getByPlaceholderText } = tree;
   getByPlaceholderText('Your Email');
 });
+
+it('should test for input displays Your Email placeholder', () => {
+  const textarea = {
+    elementConfig: {
+      placeholder: 'Enter description',
+      required: true,
+      type: 'textarea',
+      elementtype: 'textarea',
+      invalid: 'true'
+    }
+  };
+  const tree = renderInput(textarea);
+  const { getByPlaceholderText } = tree;
+  getByPlaceholderText('Enter description');
+});
