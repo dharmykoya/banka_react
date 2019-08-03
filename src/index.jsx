@@ -7,11 +7,13 @@ import thunk from 'redux-thunk';
 import App from './App';
 import './index.css';
 import authReducer from './pages/Signin/store/auth.reducer';
+import dashboardReducer from './pages/Dashboard/store/dashboard.reducer'
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  account: dashboardReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(

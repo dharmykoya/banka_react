@@ -1,6 +1,7 @@
 /* eslint-disable arrow-parens */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './Signin.css';
 import Inputfield from '../../components/InputField/InputField';
 import Button from '../../components/Buttons/Button';
@@ -99,7 +100,7 @@ export class Signin extends Component {
 
   render() {
     const { userData, formIsValid } = this.state;
-    const { loading } = this.props;
+    const { loading, error } = this.props;
     const InputNames = Object.keys(userData);
 
     const formElementsArray = [];
@@ -122,18 +123,26 @@ export class Signin extends Component {
 
     let errorMessage;
 
-    if (this.props.error) {
+    // error message to be dispalyed from server
+    if (error) {
       errorMessage = (
         <div className="alert hide">
           <span className="closebtn" id="closebtn">
             &times;
           </span>
-          <h3 className="message white">{this.props.error}</h3>
+          <h3 className="message white">{error}</h3>
         </div>
       );
     }
+
+    // Redirection
+    let authRedirect = null;
+    if (this.props.isAuthenticated) {
+      authRedirect = <Redirect to="/dashboard" />;
+    }
     return (
       <main>
+        {authRedirect}
         <div className="login-container">
           <form
             className="register-form"
@@ -175,7 +184,8 @@ export class Signin extends Component {
 const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
-    error: state.auth.error
+    error: state.auth.error,
+    isAuthenticated: state.auth.token !== null
   };
 };
 const mapDispatchToProps = (dispatch) => {
