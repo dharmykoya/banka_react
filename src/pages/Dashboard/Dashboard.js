@@ -11,8 +11,7 @@ const { fetchUserAccount } = action;
 
 export class Dashboard extends Component {
   componentDidMount() {
-    const { userId } = this.props;
-    this.props.userAccount(userId);
+    this.props.userAccount();
   }
 
   render() {
@@ -92,7 +91,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    userAccount: (userId) => dispatch(fetchUserAccount(userId))
+    userAccount: () => dispatch(fetchUserAccount())
   };
 };
 

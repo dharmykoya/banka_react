@@ -9,6 +9,8 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Transaction from './pages/Transaction/Transaction';
 import ListUser from './pages/ListUser/ListUser';
+import TransactionHistory from './pages/TransactionHistory/TransactionHistory';
+
 import './index.css';
 
 class App extends Component {
@@ -22,6 +24,7 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/create-account" component={CreateAccount} />
           <Route path="/transaction" component={Transaction} />
+          <Route path="/transaction-history" component={TransactionHistory} />
           <Route path="/list-users" component={ListUser} />
         </Switch>
       </Layout>

@@ -1,9 +1,13 @@
 body {
-  font-family: "Ubuntu";
+  font-family: 'Ubuntu';
 }
 .list-account-main {
   margin: 20px auto;
   width: 80%;
+}
+
+.list-table-th th, td {
+  border: none;
 }
 
 .list-staff-container {
