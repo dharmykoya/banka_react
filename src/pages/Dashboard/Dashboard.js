@@ -1,51 +1,102 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Dashboard.css';
+import PropTypes from 'prop-types';
 import DashboardInfo from '../../components/DashboardInfo/DashboardInfo';
 import ClientDetails from '../../components/ClientDetails/ClientDetails';
+import action from './store/dashboard.action';
+import PageLoading from '../../components/PageLoading/PageLoading';
 
-const Dashboard = () => {
-  return (
-    <div>
-      <section className="dashboard-container">
-        <div className="dashboard-header">
-          <DashboardInfo
-            profileImage="https://via.placeholder.com/150"
-            accountName="Damilola Adekoya"
-            accountBalance="50,000"
-            accountType="Savings Balance"
-          />
-        </div>
-        <div className="dashboard-profile">
-          <ClientDetails
-            accountNumber="209090294"
-            accountEmail="dami@yahoo.com"
-            phoneNumber="08037145164"
-            accountStatus="active"
-          />
-        </div>
+const { fetchUserAccount } = action;
 
-        <div className="dashboard-main">
-          <div className="dashboard-main-item-1">
-            <h5>CONTROL PANEL</h5>
-            <ul className="list-inline-item">
-              <li id="upload-picture" className="list-inline-item cursor">
-                <i className="fa fa-envelope" />
-                upload picture
-              </li>
-              <li id="change-password" className="list-inline-item cursor">
-                <i className="fa fa-lock" />
-                change password
-              </li>
-              <li className="list-inline-item">
-                <i className="fa fa-comments" aria-hidden="true" />
-                Open Ticket
-              </li>
-            </ul>
-          </div>
+export class Dashboard extends Component {
+  componentDidMount() {
+    const { userId } = this.props;
+    this.props.userAccount(userId);
+  }
+
+  render() {
+    let dashboardDetails = <PageLoading />;
+    if (!this.props.isLoading) {
+      const {
+        account_number: accountNumber,
+        balance,
+        status,
+        type: accountType
+      } = this.props.accountDetails;
+      const { email, firstName, lastName } = this.props.userDetails;
+      const name = `${firstName} ${lastName}`;
+      dashboardDetails = (
+        <div>
+          <section className="dashboard-container">
+            <div className="dashboard-header">
+              <DashboardInfo
+                profileImage="https://via.placeholder.com/150"
+                accountName={name}
+                accountBalance={balance}
+                accountType={accountType === 'savings' ? 'SAVINGS' : 'CURRENT'}
+              />
+            </div>
+            <div className="dashboard-profile">
+              <ClientDetails
+                accountNumber={accountNumber}
+                accountEmail={email}
+                phoneNumber="08037145164"
+                accountStatus={status === 'active' ? 'ACTIVE' : 'DORMANT'}
+              />
+            </div>
+
+            <div className="dashboard-main">
+              <div className="dashboard-main-item-1">
+                <h5>CONTROL PANEL</h5>
+                <ul className="list-inline-item">
+                  <li id="upload-picture" className="list-inline-item cursor">
+                    <i className="fa fa-envelope" />
+                    upload picture
+                  </li>
+                  <li id="change-password" className="list-inline-item cursor">
+                    <i className="fa fa-lock" />
+                    change password
+                  </li>
+                  <li className="list-inline-item">
+                    <i className="fa fa-comments" aria-hidden="true" />
+                    Open Ticket
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-    </div>
-  );
+      );
+    }
+    return dashboardDetails;
+  }
+}
+
+Dashboard.propTypes = {
+  userId: PropTypes.number.isRequired,
+  accountDetails: PropTypes.object.isRequired,
+  userDetails: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  userAccount: PropTypes.func
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return {
+    userId: state.auth.userId,
+    accountDetails: state.account.accountDetails,
+    userDetails: state.account.userDetails,
+    isLoading: state.account.loading
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userAccount: (userId) => dispatch(fetchUserAccount(userId))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

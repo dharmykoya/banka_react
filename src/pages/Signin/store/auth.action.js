@@ -22,15 +22,15 @@ const authFail = (error) => ({
 const auth = (loginDetails) => {
   return (dispatch) => {
     dispatch(authStart());
-
     axios
       .post('auth/signin', loginDetails)
       .then((response) => {
-        // console.log(32, response.data);
+        console.log(32, response.data.data);
+        localStorage.setItem('token', response.data.data.token);
         dispatch(authSuccess(response.data.data));
       })
       .catch((error) => {
-        // console.log(121, error.response.data.error);
+        console.log(121, error.response.data.error);
         dispatch(authFail(error.response.data.error));
       });
   };

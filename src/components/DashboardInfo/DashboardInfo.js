@@ -10,6 +10,7 @@ const dashboardInfo = (props) => {
             id="profilePic"
             className="profilepic"
             src={props.profileImage}
+            alt=""
           />
         </div>
       </div>

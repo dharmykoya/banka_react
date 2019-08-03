@@ -4,6 +4,8 @@ import { updateObject } from '../../../helpers/helper';
 const initialState = {
   token: null,
   userId: null,
+  userType: null,
+  isAdmin: null,
   error: null,
   loading: false
 };
@@ -19,6 +21,8 @@ const authSuccess = (state, action) => {
   return updateObject(state, {
     token: action.authData.token,
     userId: action.authData.id,
+    userType: action.authData.type,
+    isAdmin: action.authData.isAdmin,
     error: null,
     loading: false
   });
