@@ -1,13 +1,12 @@
 import React from 'react';
 import NavigationItem from '../NavigationItem/NavigationItem';
-import classes from './LeftNavigationItems.css';
+import './LeftNavigationItems.css';
 
 const leftNavigationItems = () => (
-  <nav className={classes.navItemLeft}>        
+  <nav>        
     <ul>
-      <NavigationItem>Home</NavigationItem>
-      <NavigationItem>About</NavigationItem>
-      <NavigationItem>Service</NavigationItem>
+      <NavigationItem link='dashboard'>Profile</NavigationItem>
+      <NavigationItem link='transaction-history'>My Transaction</NavigationItem>
     </ul>
   </nav>
 );

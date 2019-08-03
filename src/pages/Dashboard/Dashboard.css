@@ -69,7 +69,7 @@ body {
 
 .list-account-item {
   display: grid;
-  grid-template-columns: 300px auto auto auto;
+  grid-template-columns: auto auto auto auto;
   list-style: none;
   grid-row-gap: 20px;
 }

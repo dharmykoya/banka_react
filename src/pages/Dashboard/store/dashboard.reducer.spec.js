@@ -46,23 +46,23 @@ describe('auth actions', () => {
     expect(userAccountFetchStarted()).toEqual(expectedAction);
   });
 
-  it('should create an action that fetches a user details using the userId', () => {
-   nock('https://banktoday.herokuapp.com/api/v1/')
-      .get('/user/1')
-      .reply(200, userAccountDetails);
+  // it('should create an action that fetches a user details using the userId', () => {
+  //  nock('https://banktoday.herokuapp.com/api/v1/')
+  //     .get('/user/1')
+  //     .reply(200, userAccountDetails);
 
-    return store.dispatch(fetchUserAccount(1)).then(() => {
-      expect(store.getActions()).toMatchSnapshot();
-    });
-  });
+  //   return store.dispatch(fetchUserAccount(1)).then(() => {
+  //     expect(store.getActions()).toMatchSnapshot();
+  //   });
+  // });
 
-  it('should return error when trying to fetch a request', () => {
-    nock('https://banktoday.herokuapp.com/api/v1/')
-      .get('/user/')
-      .reply(422, ['invalid value']);
+  // it('should return error when trying to fetch a request', () => {
+  //   nock('https://banktoday.herokuapp.com/api/v1/')
+  //     .get('/user/')
+  //     .reply(422, ['invalid value']);
 
-    return store.dispatch(fetchUserAccount()).then(() => {
-      expect(store.getActions()).toMatchSnapshot();
-    });
-  });
+  //   return store.dispatch(fetchUserAccount()).then(() => {
+  //     expect(store.getActions()).toMatchSnapshot();
+  //   });
+  // });
 });
