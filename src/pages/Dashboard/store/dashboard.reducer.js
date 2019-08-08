@@ -26,7 +26,7 @@ const userAccountSuccess = (state, action) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.USER_ACCOUNT_FETCH_STARTED:
-      return userAccountFetchStarted(state, action)
+      return userAccountFetchStarted(state, action);
     case actionTypes.USER_ACCOUNT_SUCCESS:
       return userAccountSuccess(state, action);
 

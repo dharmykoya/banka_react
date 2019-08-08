@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import './Dashboard.css';
 import PropTypes from 'prop-types';
 import DashboardInfo from '../../components/DashboardInfo/DashboardInfo';
 import ClientDetails from '../../components/ClientDetails/ClientDetails';
 import action from './store/dashboard.action';
 import PageLoading from '../../components/PageLoading/PageLoading';
+import Logout from '../Logout/Logout';
 
 const { fetchUserAccount } = action;
 
@@ -16,6 +18,10 @@ export class Dashboard extends Component {
 
   render() {
     let dashboardDetails = <PageLoading />;
+    const token = localStorage.getItem('token');
+    if (!token) {
+      dashboardDetails = <Logout />;
+    }
     if (!this.props.isLoading) {
       const {
         account_number: accountNumber,
@@ -85,7 +91,8 @@ const mapStateToProps = (state) => {
     userId: state.auth.userId,
     accountDetails: state.account.accountDetails,
     userDetails: state.account.userDetails,
-    isLoading: state.account.loading
+    isLoading: state.account.loading,
+    logoutState: state.auth.logoutState
   };
 };
 
