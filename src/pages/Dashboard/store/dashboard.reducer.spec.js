@@ -1,5 +1,10 @@
+import axios from 'axios';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+var MockAdapter = require('axios-mock-adapter');
+ 
+// This sets the mock adapter on the default instance
+var mock = new MockAdapter(axios);
 
 import nock from 'nock';
 

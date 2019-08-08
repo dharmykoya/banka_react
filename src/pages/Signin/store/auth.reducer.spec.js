@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import moxios from 'moxios';
-import mockAxios from '../../../__mocks__/axios.mock';
+// import mockAxios from '../../../__mocks__/axios.mock';
 
 import * as actionTypes from '../../../store/actions/actionTypes';
 import authAction from './auth.action';

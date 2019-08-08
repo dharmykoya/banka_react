@@ -1,7 +1,6 @@
 import axios from '../../../axios-auth';
 import jwtDecode from 'jwt-decode';
 
-import jwt from 'jsonwebtoken';
 import * as actionTypes from '../../../store/actions/actionTypes';
 
 const userAccount = (userAccount) => {
@@ -15,19 +14,26 @@ const userAccountFetchStarted = () => ({
   type: actionTypes.USER_ACCOUNT_FETCH_STARTED
 });
 
+const userAccountFetchFailed = () => ({
+  type: actionTypes.USER_ACCOUNT_FETCH_FAIL
+});
+
 const fetchUserAccount = () => {
   const token = localStorage.getItem('token');
+  if (!token) {
+    return (dispatch) => {
+      dispatch(userAccountFetchFailed());
+    };
+  }
   let userId;
-  jwt.verify(token, 'damilola_adekoya_secret', (err, decoded) => {
-    if (err) {
-      console.log(333, err);
-    }
-    // var current_time = new Date().getTime() / 1000;
-	  // if (current_time > decoded.exp) { console.log(1232, 'I am here') } else {
-    //   console.log(121992, 'dami')
-    // }
-    userId = decoded.user.id;
-  });
+  const decodedToken = jwtDecode(token);
+  var currentTime = new Date().getTime() / 1000;
+  if (currentTime > decodedToken.exp) {
+    console.log(1232, 'I am here');
+  } else {
+    console.log(121992, 'dami');
+  }
+  userId = decodedToken.user.id;
   return (dispatch) => {
     dispatch(userAccountFetchStarted());
     return axios
@@ -36,9 +42,9 @@ const fetchUserAccount = () => {
         dispatch(userAccount(result.data.data));
       })
       .catch((error) => {
-        console.log(121, error.response);
+        dispatch(userAccountFetchFailed());
       });
   };
 };
 
-export default { userAccount, fetchUserAccount, userAccountFetchStarted };
+export default { userAccount, fetchUserAccount, userAccountFetchStarted, userAccountFetchFailed };
