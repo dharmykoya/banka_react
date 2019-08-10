@@ -14,13 +14,13 @@ const toolbar = props => (
           <img className="index-logo" src={Logo} alt="logo" />
           anka
         </Link>
-        {props.isAuthenticated ? <LeftNavigationItems />: ''}
+        {props.isAuthenticated ? <LeftNavigationItems isClient={props.isClient}/>: ''}
         
       </div>
       <Hamburger navClicked={props.navClicked} />
       
       <div>
-        <RightNavigationItems isAuthenticated={props.isAuthenticated}/>
+        <RightNavigationItems isAuthenticated={props.isAuthenticated} isClient={props.isClient}/>
       </div>
     </header>
   </div>

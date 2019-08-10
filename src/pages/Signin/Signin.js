@@ -137,8 +137,11 @@ export class Signin extends Component {
 
     // Redirection
     let authRedirect = null;
-    if (this.props.isAuthenticated) {
+    if (this.props.isAuthenticated && this.props.client) {
       authRedirect = <Redirect to="/dashboard" />;
+    }
+    if (this.props.isAuthenticated && this.props.staff) {
+      authRedirect = <Redirect to="/staff" />;
     }
     return (
       <main>
@@ -149,6 +152,7 @@ export class Signin extends Component {
             name="signinForm"
             id="signinForm"
             onSubmit={this.signinHandler}
+            data-testid="form"
           >
             <div className="form">
               {errorMessage}
@@ -185,7 +189,9 @@ const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
     error: state.auth.error,
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    client: state.auth.userType === 'client',
+    staff: state.auth.userType === 'staff' && !state.auth.isAdmin
   };
 };
 const mapDispatchToProps = (dispatch) => {

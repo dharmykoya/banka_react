@@ -1,27 +1,27 @@
+.headerContainer {
+  background-color: #dd4f05;
+}
 
-  .headerContainer {
-    background-color: #dd4f05;
-  }
-  
-  .Header {
-    display: flex;
-    justify-content: space-between;
-    margin: 0px auto;
-  }
-  
-  .Header li {
-    list-style: none;
-    display: inline-block;
-    padding: 0px 10px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .Header li a:hover {
-    color: black;
-  }
-  
-  /* @media screen and (max-width: 600px) {
+.Header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0px auto;
+  max-width: 1100px;
+}
+
+.Header li {
+  list-style: none;
+  display: inline-block;
+  padding: 0px 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.Header li a:hover {
+  color: black;
+}
+
+/* @media screen and (max-width: 600px) {
     .Header a {display: none;}
     .hamburger {
       display: block;

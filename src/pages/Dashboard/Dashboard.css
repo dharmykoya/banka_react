@@ -1,6 +1,11 @@
 body {
-  font-family: "Ubuntu";
+  font-family: 'Ubuntu';
   background: #f5f6fa;
+}
+
+.dashboard-container {
+  max-width: 1300px;
+  margin: 0px auto;
 }
 
 .fa {
@@ -40,7 +45,6 @@ body {
   width: inherit;
   height: inherit;
 }
-
 
 .dashboard-header-item-3 {
   display: inline-flex;

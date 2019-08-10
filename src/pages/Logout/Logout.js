@@ -5,12 +5,12 @@ import action from '../Signin/store/auth.action';
 
 const { authLogout } = action;
 
-class Logout extends Component {
+export class Logout extends Component {
   componentDidMount() {
     this.props.logout();
   }
   render() {
-    return <Redirect to="/" />;
+    return <Redirect to="/signin" />;
   }
 }
 
