@@ -1,19 +1,19 @@
 import * as actionTypes from '../../../store/actions/actionTypes';
 import { updateObject } from '../../../helpers/helper';
 
-const initialState = {
+export const initialState = {
   token: null,
   userId: null,
   userType: null,
   isAdmin: null,
   error: null,
   loading: false,
-  logoutState: false
+  logoutState: false,
+  userDetails: null
 };
 
 const authStart = (state, action) => {
   return updateObject(state, {
-    error: action.error,
     loading: true
   });
 };
@@ -25,7 +25,8 @@ const authSuccess = (state, action) => {
     userType: action.authData.type,
     isAdmin: action.authData.isAdmin,
     error: null,
-    loading: false
+    loading: false,
+    userDetails: action.authData
   });
 };
 

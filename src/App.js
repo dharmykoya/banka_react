@@ -12,6 +12,7 @@ import CreateAccount from './pages/CreateAccount/CreateAccount';
 import Transaction from './pages/Transaction/Transaction';
 import ListUser from './pages/ListUser/ListUser';
 import TransactionHistory from './pages/TransactionHistory/TransactionHistory';
+import StaffDashboard from './pages/StaffDashboard/StaffDashboard';
 import Logout from './pages/Logout/Logout';
 const { authCheckState } = action;
 
@@ -32,6 +33,7 @@ class App extends Component {
           <Route path="/create-account" component={CreateAccount} />
           <Route path="/transaction" component={Transaction} />
           <Route path="/transaction-history" component={TransactionHistory} />
+          <Route path="/staff" component={StaffDashboard} />
           <Route path="/logout" component={Logout} />
           <Route path="/list-users" component={ListUser} />
         </Switch>

@@ -2,9 +2,6 @@
   background-color: #dd4f05;
   color: white;
 }
-.NavRight ul {
-  margin-right: 50px;
-}
 
 @media screen and (max-width: 600px) {
   .NavRight ul a {

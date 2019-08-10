@@ -6,12 +6,21 @@ import Toolbar from './Toolbar';
 configure({ adapter: new Adapter() });
 
 describe('<Toolbar />', () => {
-  const props = {
-    navClicked: jest.fn()
-  };
+ 
 
 
   it('should render NavigationItem', () => {
+    const props = {
+      navClicked: jest.fn()
+    };
+    shallow(<Toolbar {...props} />);
+  });
+
+  it('should render NavigationItem when authenticated', () => {
+    const props = {
+      navClicked: jest.fn(),
+      isAuthenticated: true
+    };
     shallow(<Toolbar {...props} />);
   });
 
