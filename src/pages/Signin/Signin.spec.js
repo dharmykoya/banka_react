@@ -4,10 +4,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
-import { BrowserRouter, history } from 'react-router-dom';
 
 import Signin from './Signin';
-import { tupleTypeAnnotation } from '@babel/types';
 
 configure({ adapter: new Adapter() });
 const middlewares = [thunk];

@@ -9,6 +9,13 @@
   max-width: 1100px;
 }
 
+.logo-text {
+  font-size: 25px;
+  text-decoration: none;
+  color: white;
+}
+
+
 .Header li {
   list-style: none;
   display: inline-block;

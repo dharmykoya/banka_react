@@ -8,7 +8,7 @@ import Button from '../../components/Buttons/Button';
 import Spinner from '../../components/Spinner/Spinner';
 import action from './store/auth.action';
 
-const { auth, authFail, authStart, authSuccess } = action;
+const { auth } = action;
 
 export class Signin extends Component {
   state = {

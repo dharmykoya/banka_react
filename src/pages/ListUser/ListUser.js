@@ -1,6 +1,7 @@
 import React from 'react';
 import './ListUser.css';
 import TableRow from '../../components/Table/TableRow/TableRow';
+import { Link } from 'react-router-dom';
 
 const ListUser = () => {
   const tableHead = [
@@ -19,11 +20,14 @@ const ListUser = () => {
           id="savings_account"
           className="tabcontent-list-account show-tabcontent"
         >
-          <table id="savings-account-table" className="list-account-table list-table-th">
+          <table
+            id="savings-account-table"
+            className="list-account-table list-table-th"
+          >
             <thead>
               <TableRow th={tableHead} />
             </thead>
-            <tbody id="staff-tbody" className='list-table-th'>
+            <tbody id="staff-tbody" className="list-table-th">
               <tr className="list-tr-hover list-table-th">
                 <td>Atiku Abubaka</td>
                 <td>001</td>
@@ -39,15 +43,15 @@ const ListUser = () => {
             </tbody>
             <tfoot>
               <tr className="last-child">
-                <td colspan="6" className="tran-pagination">
+                <td colSpan="6" className="tran-pagination">
                   <div className="pagination">
-                    <a href="#">&laquo;</a>
-                    <a href="#" className="active">
+                    <Link to="#">&laquo;</Link>
+                    <Link to="#" className="active">
                       1
-                    </a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">&raquo;</a>
+                    </Link>
+                    <Link to="#">2</Link>
+                    <Link to="#">3</Link>
+                    <Link to="#">&raquo;</Link>
                   </div>
                 </td>
               </tr>

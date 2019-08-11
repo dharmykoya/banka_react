@@ -12,7 +12,9 @@ const rightNavigationItems = (props) => {
           <NavigationItem link="/signin">Signin</NavigationItem>
         )}
         {props.isAuthenticated ? (
-          <NavigationItem>{props.isClient ? 'CLIENT' : 'STAFF'}</NavigationItem>
+          <NavigationItem link="#" className="role-disabled">
+            {!props.isClient ? 'CLIENT' : 'STAFF'}
+          </NavigationItem>
         ) : (
           <NavigationItem link="/signup">Signup</NavigationItem>
         )}

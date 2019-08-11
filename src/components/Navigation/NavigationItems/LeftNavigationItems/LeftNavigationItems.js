@@ -6,7 +6,7 @@ const leftNavigationItems = (props) => (
   <nav>
     <ul>
       <NavigationItem link="dashboard">Profile</NavigationItem>
-      {props.isClient ? (
+      {!props.isClient ? (
         <NavigationItem link="transaction-history">
           My Transaction
         </NavigationItem>

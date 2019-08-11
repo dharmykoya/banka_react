@@ -79,10 +79,10 @@ export class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-  userId: PropTypes.number.isRequired,
-  accountDetails: PropTypes.object.isRequired,
-  userDetails: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  userId: PropTypes.number,
+  accountDetails: PropTypes.object,
+  userDetails: PropTypes.object,
+  isLoading: PropTypes.bool,
   userAccount: PropTypes.func
 };
 

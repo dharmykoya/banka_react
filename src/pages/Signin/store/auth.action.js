@@ -61,18 +61,11 @@ const auth = (loginDetails) => {
 
 const authCheckState = () => {
   return (dispatch) => {
-    console.log(789);
     const token = localStorage.getItem('token');
     if (!token) {
       dispatch(authLogout());
     } else {
       const decodedToken = jwtDecode(token);
-      var currentTime = new Date().getTime() / 1000;
-      // if (currentTime > decodedToken.exp) {
-      //   console.log(1232, 'I am here');
-      // } else {
-      //   console.log(121992, 'dami');
-      // }
       const expirationDate = new Date(localStorage.getItem('expirationDate'));
       if (expirationDate <= new Date()) {
         dispatch(authLogout());

@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Layout from './Layout';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { BrowserRouter, history } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 
 configure({ adapter: new Adapter() });
@@ -27,7 +27,7 @@ describe('Layout', () => {
       }
     };
     const store = mockStore(props);
-    const container = mount(
+    mount(
       <Provider store={store}>
         <BrowserRouter>
           <Layout {...props} />
@@ -47,7 +47,8 @@ describe('Layout', () => {
         loading: false,
         logoutState: false,
         userDetails: null
-      }
+      },
+      to: '/signin'
     };
     const store = mockStore(props);
     const navToggleHandler = jest.fn();

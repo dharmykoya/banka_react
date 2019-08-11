@@ -130,7 +130,7 @@ describe('Dashboard', () => {
     });
 
     it('should render Dashboard', () => {
-      const wrapper = mount(
+      mount(
         <Provider store={store}>
           <BrowserRouter>
             <Dashboard />

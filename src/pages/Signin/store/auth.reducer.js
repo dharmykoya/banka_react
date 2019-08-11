@@ -12,7 +12,7 @@ const initialState = {
   userDetails: null
 };
 
-const authStart = (state, action) => {
+const authStart = (state) => {
   return updateObject(state, {
     loading: true
   });
