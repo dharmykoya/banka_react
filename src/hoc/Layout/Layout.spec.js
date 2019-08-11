@@ -1,42 +1,73 @@
 import React from 'react';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import Layout from './Layout';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, history } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import { Layout, mapStateToProps } from './Layout.js';
 
 configure({ adapter: new Adapter() });
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
-let layout;
 
-let store = mockStore({});
 describe('Layout', () => {
-  beforeEach(() => {
-    // creates the store with any initial state or middleware needed
-
-    const initialState = {
-      token: null,
-      userType: 'client',
-      showNavToggle: false
+  it('should render layout when not authenticated', () => {
+    const props = {
+      auth: {
+        token: 'null',
+        userId: null,
+        userType: null,
+        isAdmin: null,
+        error: null,
+        loading: false,
+        logoutState: false,
+        userDetails: null
+      }
     };
-    store = mockStore(initialState);
-    layout = mount(
+    const store = mockStore(props);
+    const container = mount(
       <Provider store={store}>
         <BrowserRouter>
-          <Layout store={store} />
+          <Layout {...props} />
         </BrowserRouter>
       </Provider>
     );
   });
 
-  it('should render layout', () => {
-    const initialState = {
-      token: null,
-      userType: 'client'
+  it('should render the layout when authenticated', () => {
+    const props = {
+      auth: {
+        token: 'some-token',
+        userId: null,
+        userType: null,
+        isAdmin: null,
+        error: null,
+        loading: false,
+        logoutState: false,
+        userDetails: null
+      }
     };
+    const store = mockStore(props);
+    const navToggleHandler = jest.fn();
+    const navClicked = jest.fn();
+    const event = {
+      preventDefault() {},
+      target: navClicked
+    };
+    const container = mount(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Layout
+            {...props}
+            navToggleHandler={navToggleHandler}
+            navClicked={navClicked}
+          />
+        </BrowserRouter>
+      </Provider>
+    );
+    const hamburger = container.find('hamburger');
+    hamburger.simulate('click', event);
   });
 });

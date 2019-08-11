@@ -1,7 +1,7 @@
 import * as actionTypes from '../../../store/actions/actionTypes';
 import { updateObject } from '../../../helpers/helper';
 
-export const initialState = {
+const initialState = {
   token: null,
   userId: null,
   userType: null,

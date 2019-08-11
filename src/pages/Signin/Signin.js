@@ -18,7 +18,9 @@ export class Signin extends Component {
         elementConfig: {
           type: 'email',
           placeholder: 'Your Email',
-          required: true
+          required: true,
+          id: 'login-email',
+          name: 'email'
         },
         value: '',
         validation: {
@@ -32,7 +34,9 @@ export class Signin extends Component {
         elementConfig: {
           type: 'password',
           placeholder: 'Your Password',
-          required: true
+          required: true,
+          id: 'login-password',
+          name: 'password'
         },
         value: '',
         validation: {

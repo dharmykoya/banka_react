@@ -2,7 +2,7 @@ import axios from 'axios';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 var MockAdapter = require('axios-mock-adapter');
- 
+
 // This sets the mock adapter on the default instance
 var mock = new MockAdapter(axios);
 
@@ -34,7 +34,7 @@ const userAccountDetails = {
       id: 5,
       email: 'issacola57@gmail.com',
       firstName: 'isaac',
-      lastName: 'olayisade',
+      lastName: 'olayisaw',
       type: 'client',
       isAdmin: false
     }
@@ -42,8 +42,8 @@ const userAccountDetails = {
 };
 describe('auth actions', () => {
   afterEach(() => {
-    nock.cleanAll()
-  })
+    nock.cleanAll();
+  });
   it('should create an action to start dashboard fetching', () => {
     const expectedAction = {
       type: actionTypes.USER_ACCOUNT_FETCH_STARTED
@@ -52,7 +52,7 @@ describe('auth actions', () => {
   });
 
   // it('should create an action that fetches a user details using the userId', () => {
-  //  nock('https://banktoday.herokuapp.com/api/v1/')
+  //   nock('https://banktoday.herokuapp.com/api/v1/')
   //     .get('/user/1')
   //     .reply(200, userAccountDetails);
 
