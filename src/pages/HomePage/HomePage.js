@@ -1,5 +1,9 @@
 import React from 'react';
 import './HomePage.css';
+import Image1 from '../../../public/assets/svg/index1.svg';
+import Image2 from '../../../public/assets/svg/index2.svg';
+import Image3 from '../../../public/assets/svg/index3.svg';
+import Image4 from '../../../public/assets/svg/index4.svg';
 
 const HomePage = () => (
   <div>
@@ -14,19 +18,19 @@ const HomePage = () => (
         </div>
         <div className="index-text-images">
           <div className="index-image">
-            <img src="../../../src/svg/index1.svg" alt="save with us" />
+            <img src={Image1} alt="save with us" />
             <p>Save</p>
           </div>
           <div className="index-image">
-            <img src="../../../src/svg/index2.svg" alt="save with us" />
+            <img src={Image2} alt="Investments" />
             <p>Investments</p>
           </div>
           <div className="index-image">
-            <img src="../../../src/svg/index3.svg" alt="save with us" />
+            <img src={Image3} alt="Secured" />
             <p>Secured</p>
           </div>
           <div className="index-image">
-            <img src="../../../src/svg/index4.svg" alt="save with us" />
+            <img src={Image4} alt="Every where you go" />
             <p>Every where you go</p>
           </div>
         </div>
