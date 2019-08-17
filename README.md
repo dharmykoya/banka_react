@@ -1,7 +1,7 @@
-
+[![Build Status](https://travis-ci.org/dharmykoya/banka_react.svg?branch=bg-test-fix-167825639)](https://travis-ci.org/dharmykoya/banka_react) [![Coverage Status](https://coveralls.io/repos/github/dharmykoya/banka_react/badge.svg?branch=bg-test-fix-167825639)](https://coveralls.io/github/dharmykoya/banka_react?branch=bg-test-fix-167825639)
 
 # Banka
-[![Build Status](https://travis-ci.org/dharmykoya/banka_react.svg?branch=bg-test-fix-167825639)](https://travis-ci.org/dharmykoya/banka_react) [![Coverage Status](https://coveralls.io/repos/github/dharmykoya/banka_react/badge.svg?branch=bg-test-fix-167825639)](https://coveralls.io/github/dharmykoya/banka_react?branch=bg-test-fix-167825639)
+
 Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online.
 
 **UI template:** (https://dharmykoya.github.io/banka/UI/index)
