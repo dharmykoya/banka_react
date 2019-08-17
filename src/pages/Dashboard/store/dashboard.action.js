@@ -27,12 +27,7 @@ const fetchUserAccount = () => {
   }
   let userId;
   const decodedToken = jwtDecode(token);
-  var currentTime = new Date().getTime() / 1000;
-  if (currentTime > decodedToken.exp) {
-    console.log(1232, 'I am here');
-  } else {
-    console.log(121992, 'dami');
-  }
+  new Date().getTime() / 1000;
   userId = decodedToken.user.id;
   return (dispatch) => {
     dispatch(userAccountFetchStarted());
@@ -42,9 +37,14 @@ const fetchUserAccount = () => {
         dispatch(userAccount(result.data.data));
       })
       .catch((error) => {
-        dispatch(userAccountFetchFailed());
+        dispatch(userAccountFetchFailed(error.response));
       });
   };
 };
 
-export default { userAccount, fetchUserAccount, userAccountFetchStarted, userAccountFetchFailed };
+export default {
+  userAccount,
+  fetchUserAccount,
+  userAccountFetchStarted,
+  userAccountFetchFailed
+};

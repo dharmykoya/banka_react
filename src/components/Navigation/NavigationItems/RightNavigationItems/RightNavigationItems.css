@@ -17,3 +17,8 @@
     padding: 10px 10px 0px 2px;
   }
 }
+
+.role-disabled {
+  pointer-events: none;
+  cursor: default;
+}

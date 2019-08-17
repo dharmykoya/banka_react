@@ -1,6 +1,4 @@
 import axios from '../../../axios-auth';
-import jwtDecode from 'jwt-decode';
-import jwt from 'jsonwebtoken';
 import * as actionTypes from '../../../store/actions/actionTypes';
 
 
@@ -24,9 +22,6 @@ const transactionHistoryFetch = (accountNumber) => {
       .then((result) => {
         dispatch(transactionHistorySuccess(result.data.data));
       })
-      .catch((error) => {
-        console.log(121, error.response);
-      });
   };
 };
 

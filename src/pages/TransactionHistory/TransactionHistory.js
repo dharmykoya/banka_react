@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import action from './store/transactionHistory.action';
 import PageLoading from '../../components/PageLoading/PageLoading';
 import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable';

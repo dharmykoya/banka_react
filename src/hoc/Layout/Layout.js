@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Aux from '../Cover/Cover';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import NavToggle from '../../components/Navigation/NavToggle/NavToggle';
-import authAction from '../../pages/Signin/store/auth.action';
 
 export class Layout extends Component {
   state = {

@@ -8,7 +8,7 @@ import Button from '../../components/Buttons/Button';
 import Spinner from '../../components/Spinner/Spinner';
 import action from './store/auth.action';
 
-const { auth, authFail, authStart, authSuccess } = action;
+const { auth } = action;
 
 export class Signin extends Component {
   state = {
@@ -18,7 +18,9 @@ export class Signin extends Component {
         elementConfig: {
           type: 'email',
           placeholder: 'Your Email',
-          required: true
+          required: true,
+          id: 'login-email',
+          name: 'email'
         },
         value: '',
         validation: {
@@ -32,7 +34,9 @@ export class Signin extends Component {
         elementConfig: {
           type: 'password',
           placeholder: 'Your Password',
-          required: true
+          required: true,
+          id: 'login-password',
+          name: 'password'
         },
         value: '',
         validation: {

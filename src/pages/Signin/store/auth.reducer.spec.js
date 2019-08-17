@@ -4,7 +4,7 @@ import moxios from 'moxios';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import authAction from './auth.action';
 
-const { authStart, authSuccess, authFail, auth, authCheckState } = authAction;
+const { authStart, authSuccess, authFail, auth } = authAction;
 import authReducer from '../store/auth.reducer';
 
 const middlewares = [thunk]; // add your middlewares like `redux-thunk`

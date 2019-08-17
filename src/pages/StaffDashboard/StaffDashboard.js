@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PageLoading from '../../components/PageLoading/PageLoading';
 
-class StaffDashboard extends Component {
+export class StaffDashboard extends Component {
   render() {
     let staffDashboard = <PageLoading />;
     if (!this.props.loading && this.props.staff) {
-      console.log(314, this.props.staffDetails);
       const { id, email, firstName, lastName } = this.props.staffDetails;
       const name = `${firstName} ${lastName}`;
-      console.log(54687, name);
       staffDashboard = (
         <main>
           <section className="dashboard-container">

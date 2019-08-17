@@ -1,7 +1,7 @@
 import * as actionTypes from '../../../store/actions/actionTypes';
 import { updateObject } from '../../../helpers/helper';
 
-export const initialState = {
+const initialState = {
   token: null,
   userId: null,
   userType: null,
@@ -12,7 +12,7 @@ export const initialState = {
   userDetails: null
 };
 
-const authStart = (state, action) => {
+const authStart = (state) => {
   return updateObject(state, {
     loading: true
   });

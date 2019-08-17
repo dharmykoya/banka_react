@@ -5,38 +5,24 @@ import { BrowserRouter } from 'react-router-dom';
 import LeftNavigationItems from './LeftNavigationItems';
 
 describe('LeftNavigationItems', () => {
-  // const renderInput = (args) => {
-  //   const defaultprops = {
-  //     elementConfig: {
-  //       placeholder: 'Your Email',
-  //       required: true,
-  //       type: 'email',
-  //       elementtype: 'input',
-  //       invalid: 'true'
-  //     }
-  //   };
-  //   const props = { ...defaultprops, ...args };
-  //   return render(<LeftNavigationItems {...props} />);
-  // };
   it('should render LeftNavigationItems', () => {
-    const { container, debug } = render(
+    render(
       <BrowserRouter>
         <LeftNavigationItems />
       </BrowserRouter>
     );
     cleanup();
-    //debug();
   });
 
   it('should render LeftNavigationItems', () => {
     const props = {
       isClient: true
     };
-    const { container, debug } = render(
+    const { container } = render(
       <BrowserRouter>
         <LeftNavigationItems {...props} />
       </BrowserRouter>
     );
-    const navItems = container.querySelectorAll('.NavItem');
+    container.querySelectorAll('.NavItem');
   });
 });
