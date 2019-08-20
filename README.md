@@ -5,7 +5,7 @@
 Banka is a light-weight core banking application that powers banking operations like account creation, customer deposit and withdrawals. This app is meant to support a single bank, where users can signup and create bank accounts online.
 
 **UI template:** (https://dharmykoya.github.io/banka/UI/index)
-**API link:** (https://banktoday.herokuapp.com)
+**NETLIFY link:** (https://bank-today.netlify.com)
 
 ## Project Management Tool
 
