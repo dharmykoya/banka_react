@@ -6,7 +6,7 @@ import LeftNavigationItems from '../NavigationItems/LeftNavigationItems/LeftNavi
 import Hamburger from '../NavToggle/Hamburger/Hamburger';
 import './Toolbar.css';
 
-const toolbar = props => (
+const toolbar = (props) => (
   <div className="headerContainer">
     <header className="Header">
       <div className="logo-container">
@@ -14,13 +14,19 @@ const toolbar = props => (
           <img className="index-logo" src={Logo} alt="logo" />
           anka
         </Link>
-        {props.isAuthenticated ? <LeftNavigationItems isClient={props.isClient}/>: ''}
-        
+        {props.isAuthenticated ? (
+          <LeftNavigationItems isClient={props.isClient} />
+        ) : (
+          ''
+        )}
       </div>
       <Hamburger navClicked={props.navClicked} />
-      
+
       <div>
-        <RightNavigationItems isAuthenticated={props.isAuthenticated} isClient={props.isClient}/>
+        <RightNavigationItems
+          isAuthenticated={props.isAuthenticated}
+          isClient={props.isClient}
+        />
       </div>
     </header>
   </div>
