@@ -20,7 +20,7 @@ export class Layout extends Component {
         <Toolbar
           navClicked={this.navToggleHandler}
           isAuthenticated={this.props.isAuthenticated}
-          isAdmin={this.props.isClient}
+          isClient={this.props.isClient}
         />
         <NavToggle open={this.state.showNavToggle} />
         {this.props.children}
