@@ -13,7 +13,7 @@
     "test": "jest --config jest.config.js --coverage",
     "test:watch": "jest --watchAll",
     "dev": "rm -rf dist && webpack-dev-server --env.mode development --open --hot",
-    "build": "rm -rf dist && webpack --env.mode production",
+    "build": "webpack --env.mode production",
     "debug-test": "node --inspect --inspect-brk ./src/index.html",
     "debug": "node --inspect --inspect-brk ./src/App.js",
     "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
