@@ -26,7 +26,7 @@ export class Dashboard extends Component {
     if (this.props.error) {
       dashboardDetails = <Redirect to="/create-account" />;
     } else {
-      if (!this.props.isLoading) {
+      if (!this.props.isLoading && this.props.accountDetails) {
         const {
           account_number: accountNumber,
           balance,
@@ -104,7 +104,8 @@ const mapStateToProps = (state) => {
     userDetails: state.account.userDetails,
     isLoading: state.account.loading,
     logoutState: state.auth.logoutState,
-    error: state.account.error
+    error: state.account.error,
+    noAccount: state.account.accountDetails === null
   };
 };
 

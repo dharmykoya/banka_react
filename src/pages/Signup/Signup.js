@@ -166,7 +166,7 @@ export class Signup extends Component {
     });
     let button = (
       <Button nameClass="login-button" disabled={!formIsValid}>
-        Login
+        Signup
       </Button>
     );
 
@@ -188,13 +188,8 @@ export class Signup extends Component {
 
     // Redirection
     let authRedirect = null;
+
     if (this.props.isAuthenticated && this.props.client) {
-      authRedirect = <Redirect to="/dashboard" />;
-    }
-    if (this.props.isAuthenticated && this.props.staff) {
-      authRedirect = <Redirect to="/staff" />;
-    }
-    if (this.props.isAuthenticated && this.props.client && this.props.errror) {
       authRedirect = <Redirect to="/create-account" />;
     }
 

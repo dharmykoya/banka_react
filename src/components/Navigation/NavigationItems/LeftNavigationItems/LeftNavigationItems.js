@@ -17,7 +17,7 @@ const leftNavigationItems = (props) => {
       )}
     </ul>
   );
-  if (!props.noAccount) {
+  if (!props.noAccount && props.isClient) {
     navBarItems = (
       <ul>
         <NavigationItem link="/create-account">CreateAccount</NavigationItem>{' '}

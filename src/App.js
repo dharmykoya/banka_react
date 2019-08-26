@@ -12,11 +12,13 @@ import Homepage from './pages/HomePage/HomePage';
 import Signin from './pages/Signin/Signin';
 import Signup from './pages/Signup/Signup';
 import Dashboard from './pages/Dashboard/Dashboard';
+import dashboardAction from './pages/Dashboard/store/dashboard.action';
 import TransactionHistory from './pages/TransactionHistory/TransactionHistory';
 import Transaction from './pages/Transaction/Transaction';
 import StaffDashboard from './pages/StaffDashboard/StaffDashboard';
 import Logout from './pages/Logout/Logout';
-const { authCheckState, fetchUserAccount } = action;
+const { authCheckState } = action;
+const { fetchUserAccount } = dashboardAction;
 const store = setupStore();
 
 import './index.css';

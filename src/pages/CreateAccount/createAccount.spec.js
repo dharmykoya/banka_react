@@ -45,7 +45,8 @@ describe('CreateAccount', () => {
       },
       account: {
         error: 'null'
-      }
+      },
+      createAccount: {}
     });
 
     const props = {

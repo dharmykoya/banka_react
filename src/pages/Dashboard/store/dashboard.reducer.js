@@ -28,6 +28,14 @@ const userAccountFetchFailed = (state, action) => {
     error: action.error
   });
 };
+const authLogout = (state) => {
+  return updateObject(state, {
+    accountDetails: null,
+    userDetails: null,
+    error: null,
+    loading: true
+  });
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -37,6 +45,8 @@ const reducer = (state = initialState, action) => {
       return userAccountSuccess(state, action);
     case actionTypes.USER_ACCOUNT_FETCH_FAIL:
       return userAccountFetchFailed(state, action);
+    case actionTypes.AUTH_LOGOUT:
+      return authLogout(state, action);
     default:
       return state;
   }
