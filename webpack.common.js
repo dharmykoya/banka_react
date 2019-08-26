@@ -41,7 +41,8 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
+        test: /\.(css)$/,
+        include: [path.resolve(__dirname, './src'), /node_modules/],
         use: ['style-loader', 'css-loader']
       },
       {

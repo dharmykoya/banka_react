@@ -15,7 +15,7 @@ const rightNavigationItems = (props) => (
           {props.isClient ? 'CLIENT' : 'STAFF'}
         </NavigationItem>
       ) : (
-        <NavigationItem link="/signup">Signup</NavigationItem>
+        ''
       )}
     </ul>
   </div>

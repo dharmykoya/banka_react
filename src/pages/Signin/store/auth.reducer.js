@@ -9,7 +9,8 @@ const initialState = {
   error: null,
   loading: false,
   logoutState: false,
-  userDetails: null
+  userDetails: null,
+  userAccount: null
 };
 
 const authStart = (state) => {
@@ -29,6 +30,11 @@ const authSuccess = (state, action) => {
     userDetails: action.authData
   });
 };
+// const userAccount = (state, action) => {
+//   return updateObject(state, {
+//     userAccount: action.userAccount
+//   });
+// };
 
 const authFail = (state, action) => {
   return updateObject(state, { error: action.error, loading: false });
@@ -51,6 +57,9 @@ const reducer = (state = initialState, action) => {
 
     case actionTypes.AUTH_LOGOUT:
       return authLogout(state, action);
+
+    // case actionTypes.USER_ACCOUNT_SUCCESS:
+    //   return userAccount(state, action);
 
     default:
       return state;
