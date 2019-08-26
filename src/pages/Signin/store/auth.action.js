@@ -1,4 +1,3 @@
-// import axios from '../../../axios-auth';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import * as actionTypes from '../../../store/actions/actionTypes';
@@ -30,6 +29,13 @@ const authLogout = () => {
   };
 };
 
+// const userAccount = (userAccount) => {
+//   return {
+//     type: actionTypes.USER_ACCOUNT_SUCCESS,
+//     userAccount
+//   };
+// };
+
 const checkAuthTimeout = (expiresIn) => {
   return (dispatch) => {
     setTimeout(() => {
@@ -59,6 +65,29 @@ const auth = (loginDetails) => {
   };
 };
 
+// const fetchUserAccount = () => {
+//   const token = localStorage.getItem('token');
+//   if (!token) {
+//     return (dispatch) => {
+//       dispatch(authLogout());
+//     };
+//   }
+//   let userId;
+//   const decodedToken = jwtDecode(token);
+//   new Date().getTime() / 1000;
+//   userId = decodedToken.user.id;
+//   return (dispatch) => {
+//     return axios
+//       .get(`/user/${userId}`, { headers: { Authorization: `Bearer ${token}` } })
+//       .then((result) => {
+//         dispatch(userAccount(result.data.data));
+//       })
+//       .catch((error) => {
+//         dispatch(authFail(error.response));
+//       });
+//   };
+// };
+
 const authCheckState = () => {
   return (dispatch) => {
     const token = localStorage.getItem('token');
@@ -84,5 +113,5 @@ export default {
   authFail,
   auth,
   authLogout,
-  authCheckState
+  authCheckState,
 };

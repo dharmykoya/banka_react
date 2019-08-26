@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import action from './store/transactionHistory.action';
+import dashboardAction from '../Dashboard/store/dashboard.action';
 import PageLoading from '../../components/PageLoading/PageLoading';
 import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable';
 
 import './TransactionHistory.css';
 
 const { transactionHistoryFetch } = action;
+const { fetchUserAccount } = dashboardAction;
 
 class TransactionHistory extends Component {
-  componentDidMount() {
-    const { account_number: accountNumber } = this.props.accountDetails;
-    this.props.transactionHistory(accountNumber);
+
+
+  componentWillMount() {
+    this.props.transactionHistory(this.props.accountDetails.account_number);
   }
 
   render() {
@@ -41,7 +44,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     transactionHistory: (accountNumber) =>
-      dispatch(transactionHistoryFetch(accountNumber))
+      dispatch(transactionHistoryFetch(accountNumber)),
+    fetchAccount: () => dispatch(fetchUserAccount())
   };
 };
 

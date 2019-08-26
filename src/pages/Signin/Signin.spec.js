@@ -148,13 +148,6 @@ describe('Signin', () => {
     });
 
     wrapper.find('form').simulate('submit', { preventDefault() {} }); // test to see arguments used after its been submitted
-
-    // expect(props.onAuth.mock.calls.length).toBe(1);
-    // expect(props.signinHandler.mock.calls.length).toBe(1);
-    // expect(props.onSubmit.mock.calls.length).toBe(1);
-
-    // console.log(34, wrapper.debug());
-    // console.log(4, store.getState());
   });
 
   it('should render signin page', () => {

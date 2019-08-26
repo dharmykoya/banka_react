@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-onchange */
 /* eslint-disable arrow-parens */
 
 import React from 'react';
@@ -38,7 +39,7 @@ const input = (props) => {
 
     case 'select':
       inputElement = (
-        <select className="hello" defaultValue={value}>
+        <select className="hello" value={value} onChange={changed}>
           {props.elementConfig.options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.displayValue}
