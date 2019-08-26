@@ -6,7 +6,6 @@ import { ToastContainer, Slide } from 'react-toastify';
 import { connect } from 'react-redux';
 import setupStore from './store/index';
 import action from './pages/Signin/store/auth.action';
-import dashboardAction from './pages/Dashboard/store/dashboard.action';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from './hoc/Layout/Layout';
 import Homepage from './pages/HomePage/HomePage';
@@ -17,11 +16,11 @@ import TransactionHistory from './pages/TransactionHistory/TransactionHistory';
 import Transaction from './pages/Transaction/Transaction';
 import StaffDashboard from './pages/StaffDashboard/StaffDashboard';
 import Logout from './pages/Logout/Logout';
-const { authCheckState } = action;
-const { fetchUserAccount } = dashboardAction;
+const { authCheckState, fetchUserAccount } = action;
 const store = setupStore();
 
 import './index.css';
+import CreateAccount from './pages/CreateAccount/CreateAccount';
 if (localStorage.token) {
   store.dispatch(authCheckState());
   store.dispatch(fetchUserAccount());
@@ -59,6 +58,7 @@ class App extends Component {
               />
               <Route path="/staff" component={StaffDashboard} />
               <Route path="/transaction" component={Transaction} />
+              <Route path="/create-account" component={CreateAccount} />
               <Route path="/logout" component={Logout} />
             </Switch>
           </Layout>

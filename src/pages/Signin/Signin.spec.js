@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, configure } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import Adapter from 'enzyme-adapter-react-16';
@@ -49,6 +50,9 @@ describe('Signin', () => {
       auth: {
         userId: 2,
         loading: false
+      },
+      account: {
+        error: 'null'
       }
     });
 
@@ -59,7 +63,9 @@ describe('Signin', () => {
     };
     const wrapper = mount(
       <Provider store={store}>
-        <Signin {...props} />
+        <BrowserRouter>
+          <Signin {...props} />
+        </BrowserRouter>
       </Provider>
     );
 
@@ -87,6 +93,9 @@ describe('Signin', () => {
       auth: {
         userId: 2,
         loading: false
+      },
+      account: {
+        error: 'null'
       }
     });
 
@@ -135,7 +144,9 @@ describe('Signin', () => {
     };
     const wrapper = mount(
       <Provider store={store}>
-        <Signin {...props} />
+        <BrowserRouter>
+          <Signin {...props} />
+        </BrowserRouter>
       </Provider>
     );
 
@@ -163,6 +174,9 @@ describe('Signin', () => {
       auth: {
         userId: 2,
         loading: true
+      },
+      account: {
+        error: 'null'
       }
     });
 
@@ -173,7 +187,9 @@ describe('Signin', () => {
     };
     const wrapper = mount(
       <Provider store={store}>
-        <Signin {...props} />
+        <BrowserRouter>
+          <Signin {...props} />
+        </BrowserRouter>
       </Provider>
     );
 
@@ -195,6 +211,9 @@ describe('Signin', () => {
         userId: 2,
         loading: false,
         error: 'first name can not be empty'
+      },
+      account: {
+        error: 'null'
       }
     });
 
@@ -205,7 +224,9 @@ describe('Signin', () => {
     };
     const wrapper = mount(
       <Provider store={store}>
-        <Signin {...props} />
+        <BrowserRouter>
+          <Signin {...props} />
+        </BrowserRouter>
       </Provider>
     );
     const errorMessage = wrapper.find('h3.message');

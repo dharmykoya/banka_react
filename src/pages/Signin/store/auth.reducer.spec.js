@@ -4,7 +4,7 @@ import moxios from 'moxios';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import authAction from './auth.action';
 
-const { authStart, authSuccess, authFail, auth } = authAction;
+const { authStart, authSuccess, authFail, auth, register } = authAction;
 import authReducer from '../store/auth.reducer';
 
 const middlewares = [thunk]; // add your middlewares like `redux-thunk`
@@ -74,6 +74,29 @@ describe('auth actions', () => {
     store = mockStore({});
 
     store.dispatch(auth(loginDetails)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('should execute register action', async () => {
+    moxios.stubRequest('https://banktoday.herokuapp.com/api/v1/auth/signup', {
+      status: 201,
+      response: authData
+    });
+    const loginDetails = {
+      email: 'dharmykoya38@gmail.com',
+      password: 'BankappClient132@'
+    };
+    const expectedAction = [
+      {
+        type: actionTypes.AUTH_SUCCES,
+        authData
+      },
+      { type: 'AUTH_START' }
+    ];
+    store = mockStore({});
+
+    store.dispatch(register(loginDetails)).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });

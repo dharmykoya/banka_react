@@ -5,6 +5,7 @@ import dashboardAction from '../Dashboard/store/dashboard.action';
 import PageLoading from '../../components/PageLoading/PageLoading';
 import TransactionHistoryTable from '../../components/TransactionHistoryTable/TransactionHistoryTable';
 
+import Logout from '../Logout/Logout';
 import './TransactionHistory.css';
 
 const { transactionHistoryFetch } = action;
@@ -26,6 +27,11 @@ class TransactionHistory extends Component {
           transactionsList={this.props.transactionsList}
         />
       );
+    }
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      tableAccountDetails = <Logout />;
     }
     return tableAccountDetails;
   }

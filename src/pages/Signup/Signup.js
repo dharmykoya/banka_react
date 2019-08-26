@@ -84,7 +84,7 @@ export class Signup extends Component {
           type: 'password',
           placeholder: 'Confirm Password',
           required: true,
-          id: 'login-password',
+          id: 'login-password-2',
           name: 'password'
         },
         value: '',
@@ -180,9 +180,7 @@ export class Signup extends Component {
     if (error) {
       errorMessage = (
         <div className="alert hide">
-          <span className="closebtn" id="closebtn">
-            &times;
-          </span>
+          <span className="closebtn" id="closebtn"></span>
           <h3 className="message white">{error}</h3>
         </div>
       );
@@ -196,12 +194,7 @@ export class Signup extends Component {
     if (this.props.isAuthenticated && this.props.staff) {
       authRedirect = <Redirect to="/staff" />;
     }
-    if (
-      this.props.isAuthenticated &&
-      this.props.client &&
-      this.props.errror ===
-        `user ${this.props.firstName} ${this.props.lastName} has no accounts`
-    ) {
+    if (this.props.isAuthenticated && this.props.client && this.props.errror) {
       authRedirect = <Redirect to="/create-account" />;
     }
 
@@ -250,8 +243,6 @@ export class Signup extends Component {
 const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
-    firstName: state.auth.userDetails.firstName,
-    lastName: state.auth.userDetails.lastName,
     error: state.auth.error,
     isAuthenticated: state.auth.token !== null,
     client: state.auth.userType === 'client',
@@ -260,7 +251,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (email, password) => dispatch(register(email, password))
+    signup: (userDetails) => dispatch(register(userDetails))
   };
 };
 
