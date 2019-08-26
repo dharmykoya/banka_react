@@ -141,12 +141,20 @@ export class Signin extends Component {
 
     // Redirection
     let authRedirect = null;
-    if (this.props.isAuthenticated && this.props.client) {
+    if (this.props.isAuthenticated && this.props.noAccount) {
+      authRedirect = <Redirect to="/create-account" />;
+    }
+    if (
+      this.props.isAuthenticated &&
+      this.props.client &&
+      !this.props.noAccount
+    ) {
       authRedirect = <Redirect to="/dashboard" />;
     }
     if (this.props.isAuthenticated && this.props.staff) {
       authRedirect = <Redirect to="/staff" />;
     }
+
     return (
       <main>
         {authRedirect}
@@ -195,7 +203,8 @@ const mapStateToProps = (state) => {
     error: state.auth.error,
     isAuthenticated: state.auth.token !== null,
     client: state.auth.userType === 'client',
-    staff: state.auth.userType === 'staff' && !state.auth.isAdmin
+    staff: state.auth.userType === 'staff' && !state.auth.isAdmin,
+    noAccount: state.account.error
   };
 };
 const mapDispatchToProps = (dispatch) => {

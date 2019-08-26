@@ -21,6 +21,7 @@ export class Layout extends Component {
           navClicked={this.navToggleHandler}
           isAuthenticated={this.props.isAuthenticated}
           isClient={this.props.isClient}
+          noAccount={this.props.noAccount}
         />
         <NavToggle open={this.state.showNavToggle} />
         {this.props.children}
@@ -32,7 +33,8 @@ export class Layout extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.token !== null,
-    isClient: state.auth.userType === 'client'
+    isClient: state.auth.userType === 'client',
+    noAccount: state.account.error === null
   };
 };
 export default connect(mapStateToProps)(Layout);
