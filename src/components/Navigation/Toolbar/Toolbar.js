@@ -15,7 +15,10 @@ const toolbar = (props) => (
           anka
         </Link>
         {props.isAuthenticated ? (
-          <LeftNavigationItems isClient={props.isClient} />
+          <LeftNavigationItems
+            isClient={props.isClient}
+            noAccount={props.noAccount}
+          />
         ) : (
           ''
         )}

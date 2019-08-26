@@ -65,6 +65,47 @@ const auth = (loginDetails) => {
   };
 };
 
+const authCheckState = () => {
+  return (dispatch) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      dispatch(authLogout());
+    } else {
+      const decodedToken = jwtDecode(token);
+      const expirationDate = new Date(localStorage.getItem('expirationDate'));
+      if (expirationDate <= new Date()) {
+        dispatch(authLogout());
+      } else {
+        dispatch(authSuccess(token, decodedToken.user));
+        dispatch(
+          checkAuthTimeout(expirationDate.getTime() - new Date().getTime())
+        );
+      }
+    }
+  };
+};
+
+const register = (userDetails) => {
+  return (dispatch) => {
+    dispatch(authStart());
+    return axios
+      .post('https://banktoday.herokuapp.com/api/v1/auth/signup', userDetails)
+      .then((response) => {
+        const decodedToken = jwtDecode(response.data.data.token);
+        const expirationDate = new Date(
+          new Date().getTime() + decodedToken.exp / 1000
+        );
+        localStorage.setItem('token', response.data.data.token);
+        localStorage.setItem('expirationDate', expirationDate);
+        dispatch(authSuccess(response.data.data.token, response.data.data));
+        dispatch(checkAuthTimeout(decodedToken.exp));
+      })
+      .catch((error) => {
+        dispatch(authFail(error.response.data.error));
+      });
+  };
+};
+
 // const fetchUserAccount = () => {
 //   const token = localStorage.getItem('token');
 //   if (!token) {
@@ -87,26 +128,6 @@ const auth = (loginDetails) => {
 //       });
 //   };
 // };
-
-const authCheckState = () => {
-  return (dispatch) => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      dispatch(authLogout());
-    } else {
-      const decodedToken = jwtDecode(token);
-      const expirationDate = new Date(localStorage.getItem('expirationDate'));
-      if (expirationDate <= new Date()) {
-        dispatch(authLogout());
-      } else {
-        dispatch(authSuccess(token, decodedToken.user));
-        dispatch(
-          checkAuthTimeout(expirationDate.getTime() - new Date().getTime())
-        );
-      }
-    }
-  };
-};
 export default {
   authStart,
   authSuccess,
@@ -114,4 +135,5 @@ export default {
   auth,
   authLogout,
   authCheckState,
+  register
 };

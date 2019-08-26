@@ -14,8 +14,9 @@ const userAccountFetchStarted = () => ({
   type: actionTypes.USER_ACCOUNT_FETCH_STARTED
 });
 
-const userAccountFetchFailed = () => ({
-  type: actionTypes.USER_ACCOUNT_FETCH_FAIL
+const userAccountFetchFailed = (error) => ({
+  type: actionTypes.USER_ACCOUNT_FETCH_FAIL,
+  error
 });
 
 const fetchUserAccount = () => {
@@ -37,7 +38,7 @@ const fetchUserAccount = () => {
         dispatch(userAccount(result.data.data));
       })
       .catch((error) => {
-        dispatch(userAccountFetchFailed(error.response));
+        dispatch(userAccountFetchFailed(error.response.data.error));
       });
   };
 };

@@ -2,8 +2,8 @@ import React from 'react';
 import NavigationItem from '../NavigationItem/NavigationItem';
 import './LeftNavigationItems.css';
 
-const leftNavigationItems = (props) => (
-  <nav>
+const leftNavigationItems = (props) => {
+  let navBarItems = (
     <ul>
       <NavigationItem link={props.isClient ? 'dashboard' : 'staff'}>
         Profile
@@ -16,7 +16,15 @@ const leftNavigationItems = (props) => (
         <NavigationItem link="transaction">Transaction</NavigationItem>
       )}
     </ul>
-  </nav>
-);
+  );
+  if (!props.noAccount) {
+    navBarItems = (
+      <ul>
+        <NavigationItem link="/create-account">CreateAccount</NavigationItem>{' '}
+      </ul>
+    );
+  }
+  return <nav>{navBarItems}</nav>;
+};
 
 export default leftNavigationItems;
