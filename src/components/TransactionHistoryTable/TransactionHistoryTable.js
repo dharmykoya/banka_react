@@ -70,7 +70,7 @@ const TransactionHistoryTable = (props) => {
             <tbody className="tbody">{transactionsListTable}</tbody>
             <tfoot>
               <tr>
-                <td colSpan="6" className="tran-pagination">
+                {/* <td colSpan="6" className="tran-pagination">
                   <div className="pagination">
                     <Link to="#" exact>
                       &laquo;
@@ -82,7 +82,7 @@ const TransactionHistoryTable = (props) => {
                     <Link to="#">3</Link>
                     <Link to="#">&raquo;</Link>
                   </div>
-                </td>
+                </td> */}
               </tr>
             </tfoot>
           </table>

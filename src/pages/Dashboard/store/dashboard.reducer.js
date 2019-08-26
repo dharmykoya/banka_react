@@ -8,14 +8,14 @@ const initialState = {
   loading: true
 };
 
-const userAccountFetchStarted = (state, action) => {
+const userAccountFetchStarted = (state) => {
   return updateObject(state, {
-    error: action.error,
     loading: true
   });
 };
 
 const userAccountSuccess = (state, action) => {
+  console.log(123, action);
   return updateObject(state, {
     accountDetails: action.userAccount[0],
     userDetails: action.userAccount.user,
