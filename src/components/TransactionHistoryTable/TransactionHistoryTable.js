@@ -25,8 +25,19 @@ const TransactionHistoryTable = (props) => {
       </li>
     </ul>
   );
-  const transactionsListTable = props.transactionsList.map(
-    (transaction, index) => {
+  let transactionsListTable;
+  let noTransaction;
+  if (!Array.isArray(props.transactionsList)) {
+    noTransaction = (
+      <tr>
+        <td colSpan="6" className="p-tag-transaction">
+          No transaction on this account
+        </td>
+      </tr>
+    );
+  }
+  if (Array.isArray(props.transactionsList)) {
+    transactionsListTable = props.transactionsList.map((transaction, index) => {
       return (
         <tr className="" key={index + 1}>
           <td>
@@ -39,14 +50,16 @@ const TransactionHistoryTable = (props) => {
           <td>{transaction.new_balance}</td>
         </tr>
       );
-    }
-  );
+    });
+  }
+
   return (
     <main>
       <section className="dashboard-container">
         <div className="dashboard-profile">
           <div className="dashboard-profile-item">
             <h5>ACCOUNT DETAILS</h5>
+
             {accountTableDetails}
           </div>
         </div>
@@ -65,6 +78,7 @@ const TransactionHistoryTable = (props) => {
                 <th className="text-center">Old Balance (&#8358;)</th>
                 <th className="text-center">New Balance (&#8358;)</th>
               </tr>
+              {noTransaction}
             </thead>
 
             <tbody className="tbody">{transactionsListTable}</tbody>

@@ -1,66 +1,46 @@
 /* eslint-disable arrow-parens */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import './Signin.css';
+import { Redirect, Link } from 'react-router-dom';
+import './CreateAccount.css';
 import Inputfield from '../../components/InputField/InputField';
 import Button from '../../components/Buttons/Button';
 import Spinner from '../../components/Spinner/Spinner';
-import action from './store/auth.action';
+import action from './createAccount.action';
+import Logout from '../Logout/Logout';
 
-const { auth } = action;
+const { createAccount } = action;
 
-export class Signin extends Component {
+export class CreateAccount extends Component {
   state = {
     userData: {
-      email: {
-        elementtype: 'input',
+      accountType: {
+        elementtype: 'select',
         elementConfig: {
-          type: 'email',
-          placeholder: 'Your Email',
-          required: true,
-          id: 'login-email',
-          name: 'email'
+          options: [
+            { value: '', displayValue: 'Select Account Type' },
+            { value: 'savings', displayValue: 'Savings' },
+            { value: 'current', displayValue: 'Current' }
+          ],
+          name: 'role',
+          id: 'account-select'
         },
-        value: '',
-        validation: {
-          required: true
-        },
-        valid: false,
-        touched: false
-      },
-      password: {
-        elementtype: 'input',
-        elementConfig: {
-          type: 'password',
-          placeholder: 'Your Password',
-          required: true,
-          id: 'login-password',
-          name: 'password'
-        },
-        value: '',
-        validation: {
-          required: true,
-          minLength: 6
-        },
-        valid: false,
-        touched: false
+        value: ''
       }
-    },
-    formIsValid: false
+    }
   };
 
-  signinHandler = (e) => {
+  createAccountHandler = (e) => {
     e.preventDefault();
 
     const { userData } = this.state;
     const inputNames = Object.keys(userData);
-    const loginDetails = {};
+    const userDetails = {};
     inputNames.forEach((name) => {
-      loginDetails[name] = userData[name].value;
+      userDetails[name] = userData[name].value;
     });
-
-    this.props.onAuth(loginDetails);
+    const token = this.props.token;
+    this.props.createNewAccount(userDetails, token);
   };
 
   inputChangedHandler = (event, inputName) => {
@@ -73,37 +53,13 @@ export class Signin extends Component {
       ...updatedUserData[inputName]
     };
     updatedFormElement.value = event.target.value;
-    updatedFormElement.valid = this.checkValidity(
-      updatedFormElement.value,
-      updatedFormElement.validation
-    );
-    updatedFormElement.touched = true;
     updatedUserData[inputName] = updatedFormElement;
 
-    let formIsValid = true;
-
-    Object.keys(updatedUserData).forEach((input) => {
-      formIsValid = updatedUserData[input].valid && formIsValid;
-    });
-
-    this.setState({ userData: updatedUserData, formIsValid });
-  };
-
-  checkValidity = (value, rules) => {
-    let isValid = true;
-
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-
-    return isValid;
+    this.setState({ userData: updatedUserData });
   };
 
   render() {
-    const { userData, formIsValid } = this.state;
+    const { userData } = this.state;
     const { loading, error } = this.props;
     const InputNames = Object.keys(userData);
 
@@ -115,11 +71,7 @@ export class Signin extends Component {
         config: userData[input]
       });
     });
-    let button = (
-      <Button nameClass="login-button" disabled={!formIsValid}>
-        Login
-      </Button>
-    );
+    let button = <Button nameClass="login-button">Create Account</Button>;
 
     if (loading) {
       button = <Spinner />;
@@ -137,31 +89,36 @@ export class Signin extends Component {
       );
     }
 
-    // Redirection
     let authRedirect = null;
-    if (this.props.isAuthenticated && this.props.noAccount) {
-      authRedirect = <Redirect to="/create-account" />;
-    }
-    if (
-      this.props.isAuthenticated &&
-      this.props.client &&
-      !this.props.noAccount
-    ) {
-      authRedirect = <Redirect to="/dashboard" />;
-    }
-    if (this.props.isAuthenticated && this.props.staff) {
-      authRedirect = <Redirect to="/staff" />;
+    const token = localStorage.getItem('token');
+    if (!token) {
+      authRedirect = <Logout />;
     }
 
+    if (this.props.createAccount) {
+      authRedirect = <Redirect to="/dashboard" />;
+    }
+    let welcome;
+    if (this.props.userDetails) {
+      welcome = (
+        <h3>
+          Welcome {this.props.userDetails.firstName.toUpperCase()}
+          <strong className="welcome-name"></strong>, Please create a bank
+          account to continue
+        </h3>
+      );
+    }
     return (
       <main>
         {authRedirect}
-        <div className="login-container">
+
+        <div className="create-account-container">
+          {welcome}
           <form
             className="register-form"
             name="signinForm"
             id="signinForm"
-            onSubmit={this.signinHandler}
+            onSubmit={this.createAccountHandler}
             data-testid="form"
           >
             <div className="form">
@@ -181,12 +138,14 @@ export class Signin extends Component {
                   }
                 />
               ))}
-              {button}
-              <div className="button-loader" />
-              <p className="message">
-                Not Registered?
-                <a href="signup.html">Signin</a>
+              <p>
+                By creating an account you agree to our{' '}
+                <Link to="#" class="orange">
+                  Terms & Privacy
+                </Link>
+                .
               </p>
+              {button}
             </div>
           </form>
         </div>
@@ -197,21 +156,24 @@ export class Signin extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    token: state.auth.token,
+    createAccount: state.createAccount,
     loading: state.auth.loading,
+    userDetails: state.auth.userDetails,
     error: state.auth.error,
     isAuthenticated: state.auth.token !== null,
     client: state.auth.userType === 'client',
-    staff: state.auth.userType === 'staff' && !state.auth.isAdmin,
-    noAccount: state.account.error
+    staff: state.auth.userType === 'staff' && !state.auth.isAdmin
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAuth: (email, password) => dispatch(auth(email, password))
+    createNewAccount: (accountType, token) =>
+      dispatch(createAccount(accountType, token))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Signin);
+)(CreateAccount);

@@ -1,11 +1,13 @@
 body {
-  font-family: "Ubuntu";
+  font-family: 'Ubuntu';
 }
 .transaction-main {
   margin: 20px auto;
   width: 80%;
 }
-table#transaction-details, th, td {
+table#transaction-details,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
   margin-bottom: 20px;
@@ -44,11 +46,14 @@ table#transaction-summary {
   width: 15%;
 }
 
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .icon {
     margin-top: 11px;
     margin-right: 10px;
   }
+}
+
+.p-tag-transaction {
+  width: 200px;
 }

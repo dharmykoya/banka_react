@@ -9,8 +9,7 @@ const initialState = {
   error: null,
   loading: false,
   logoutState: false,
-  userDetails: null,
-  userAccount: null
+  userDetails: null
 };
 
 const authStart = (state) => {
@@ -31,6 +30,7 @@ const authSuccess = (state, action) => {
   });
 };
 // const userAccount = (state, action) => {
+//   console.log(47287, action);
 //   return updateObject(state, {
 //     userAccount: action.userAccount
 //   });
@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.AUTH_LOGOUT:
       return authLogout(state, action);
 
-    // case actionTypes.USER_ACCOUNT_SUCCESS:
+    // case actionTypes.USER_ACCOUNT_SUCCESS_PERSIST:
     //   return userAccount(state, action);
 
     default:

@@ -30,8 +30,9 @@ const authLogout = () => {
 };
 
 // const userAccount = (userAccount) => {
+//   trying to be goo(3131, userAccount);
 //   return {
-//     type: actionTypes.USER_ACCOUNT_SUCCESS,
+//     type: actionTypes.USER_ACCOUNT_SUCCESS_PERSIST,
 //     userAccount
 //   };
 // };
@@ -43,6 +44,32 @@ const checkAuthTimeout = (expiresIn) => {
     }, expiresIn);
   };
 };
+
+// const fetchUserAccount = () => {
+//   console.log('fetchUser');
+//   const token = localStorage.getItem('token');
+//   if (!token) {
+//     return (dispatch) => {
+//       dispatch(authLogout());
+//     };
+//   }
+//   let userId;
+//   const decodedToken = jwtDecode(token);
+//   userId = decodedToken.user.id;
+//   return (dispatch) => {
+//     console.log(45454, 'why?');
+//     return axios
+//       .get(`/user/${userId}`, { headers: { Authorization: `Bearer ${token}` } })
+//       .then((result) => {
+//         console.log(546, result.data);
+//         dispatch(userAccount(result.data.data));
+//       })
+//       .catch((error) => {
+//         console.log(54556, error);
+//         dispatch(authFail(error.response));
+//       });
+//   };
+// };
 
 const auth = (loginDetails) => {
   return (dispatch) => {
@@ -106,28 +133,6 @@ const register = (userDetails) => {
   };
 };
 
-// const fetchUserAccount = () => {
-//   const token = localStorage.getItem('token');
-//   if (!token) {
-//     return (dispatch) => {
-//       dispatch(authLogout());
-//     };
-//   }
-//   let userId;
-//   const decodedToken = jwtDecode(token);
-//   new Date().getTime() / 1000;
-//   userId = decodedToken.user.id;
-//   return (dispatch) => {
-//     return axios
-//       .get(`/user/${userId}`, { headers: { Authorization: `Bearer ${token}` } })
-//       .then((result) => {
-//         dispatch(userAccount(result.data.data));
-//       })
-//       .catch((error) => {
-//         dispatch(authFail(error.response));
-//       });
-//   };
-// };
 export default {
   authStart,
   authSuccess,

@@ -26,7 +26,15 @@ describe('Layout', () => {
         userDetails: null
       }
     };
-    const store = mockStore(props);
+    const store = mockStore({
+      account: {
+        error: 'some-error'
+      },
+      auth: {
+        token: null,
+        isClient: true
+      }
+    });
     mount(
       <Provider store={store}>
         <BrowserRouter>
@@ -35,7 +43,6 @@ describe('Layout', () => {
       </Provider>
     );
   });
-
   it('should render the layout when authenticated', () => {
     const props = {
       auth: {
@@ -46,11 +53,22 @@ describe('Layout', () => {
         error: null,
         loading: false,
         logoutState: false,
-        userDetails: null
+        userDetails: null,
+        account: {
+          error: null
+        }
       },
       to: '/signin'
     };
-    const store = mockStore(props);
+    const store = mockStore({
+      account: {
+        error: 'some-error'
+      },
+      auth: {
+        token: 'some-token',
+        isClient: true
+      }
+    });
     const navToggleHandler = jest.fn();
     const navClicked = jest.fn();
     const event = {

@@ -25,4 +25,17 @@ describe('LeftNavigationItems', () => {
     );
     container.querySelectorAll('.NavItem');
   });
+
+  it('should render LeftNavigationItems', () => {
+    const props = {
+      isClient: true,
+      noAccount: true
+    };
+    const { container } = render(
+      <BrowserRouter>
+        <LeftNavigationItems {...props} />
+      </BrowserRouter>
+    );
+    container.querySelectorAll('.NavItem');
+  });
 });
