@@ -51,7 +51,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     transactionHistory: (accountNumber) =>
       dispatch(transactionHistoryFetch(accountNumber)),
-    fetchAccount: () => dispatch(fetchUserAccount())
   };
 };
 

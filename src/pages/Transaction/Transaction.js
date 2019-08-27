@@ -238,7 +238,6 @@ class Transaction extends Component {
                             }
                           />
                         ))}
-                        <div className="make-transaction-loader">loader</div>
                         <button className="make-transaction-button">
                           POST
                         </button>

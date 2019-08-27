@@ -95,7 +95,7 @@ export class CreateAccount extends Component {
       authRedirect = <Logout />;
     }
 
-    if (this.props.createAccount) {
+    if (this.props.createAccount.accountDetails) {
       authRedirect = <Redirect to="/dashboard" />;
     }
     let welcome;
